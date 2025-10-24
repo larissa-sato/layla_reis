@@ -1,0 +1,78 @@
+// Styles
+import { Container, Flex } from "@/styles/Global";
+import { Text } from "@/styles/Text";
+import { Button } from "@/styles/Buttons";
+
+// Components
+import { Project } from "@/components/Project";
+import { Contacts } from "@/components/Contacts";
+
+// Data
+import { stackData } from "@/utils/stackData";
+import { userData } from "@/utils/userData";
+
+// Page Style
+import {
+  Header,
+  HeaderContent,
+  HeaderButtonsArea,
+  UserImage,
+  ProjectsArea,
+  ProjectsAreaSocialMediaMessage,
+  ProjectAreaWrapperColumns,
+  ProjectsAreaContent,
+} from "./style";
+
+export const Home = (): JSX.Element => {
+  const gihubUrl = `https://github.com/${userData.githubUser}`;
+  const portfolioUrl = `https://github.com/${userData.githubUser}/portfolio-larissa2023`;
+
+  return (
+    <main id="home">
+      <Header>
+        <Container>
+          <HeaderContent>
+            <Flex>
+              <UserImage
+                src={`https://github.com/${userData.githubUser}.png`}
+                alt={userData.nameUser}
+                title={userData.nameUser}
+                width={"250px"}
+                height={"250px"}
+              />
+            </Flex>
+            <Text as="h1" type="heading1" color="grey5">
+              Creating and{" "}
+              <Text as="span" type="heading1" color="brand1">
+                developing
+              </Text>{" "}
+              projects
+            </Text>
+            <Text type="body1" color="grey2">
+              Discover here in this environment, created especially for you, all
+              my projects and technologies
+            </Text>
+            <HeaderButtonsArea>
+              <Button as="a" type="primary" href="#projects">
+                See Projects
+              </Button>
+              <Button as="a" type="outline" target="_blank" href={portfolioUrl}>
+                See my portfolio source code
+              </Button>
+              <Button
+                color="grey5"
+                as="a"
+                css={{ "&:hover": { color: "$grey1" } }}
+                type="circle"
+                target="_blank"
+                href={gihubUrl}
+              >
+              </Button>
+            </HeaderButtonsArea>            
+          </HeaderContent>
+        </Container>
+      </Header>      
+      <Contacts />
+    </main>
+  );
+};
